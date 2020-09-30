@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_sample_data_earth_topography.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_sample_data_earth_topography.py:
+        Click :ref:`here <sphx_glr_download_sample_data_earth_topography.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_sample_data_earth_topography.py:
 
 
 Earth Topography
@@ -18,6 +20,7 @@ Heights are referenced to sea level.
 
 
 .. image:: /sample_data/images/sphx_glr_earth_topography_001.png
+    :alt: Topography of the Earth (ETOPO1)
     :class: sphx-glr-single-img
 
 
@@ -34,6 +37,38 @@ Heights are referenced to sea level.
       * latitude    (latitude) float64 -90.0 -89.5 -89.0 -88.5 ... 89.0 89.5 90.0
     Data variables:
         topography  (latitude, longitude) float64 2.762e+03 2.762e+03 ... -4.179e+03
+    Attributes:
+        generating_institute:  gfz-potsdam
+        generating_date:       2018/12/13
+        product_type:          topography
+        body:                  earth
+        modelname:             etopo1-2250
+        max_used_degree:       1277
+        filterlength:          1.0000 deg. (Gauss-Filter)
+        flength_definition:    6sigma
+        nhalf:                 405 (Transfer-Function T(nhalf)=1/2)
+        functional:            topography_shm (from shm)
+        unit:                  meter
+        refsysname:            WGS84
+        radiusrefsys:          6378137.000 m
+        flatrefsys:            3.352810664747480E-03 (1/298.25722356300)
+        long_lat_unit:         degree
+        latlimit_north:        90.000000000000
+        latlimit_south:        -90.000000000000
+        longlimit_west:        -180.00000000000
+        longlimit_east:        180.00000000000
+        gridstep:              0.50000000000000
+        latitude_parallels:    361
+        longitude_parallels:   721
+        number_of_gridpoints:  260281
+        gapvalue:              99999.0000
+        weighted_mean:         -2.3864771E+03 meter
+        maxvalue:              5.6509528E+03 meter
+        minvalue:              -8.4094822E+03 meter
+        signal_wrms:           2.4872117E+03 meter
+        grid_format:           long_lat_value
+        attributes:            longitude latitude topography
+        attributes_units:      deg. deg. meter
 
 
 
@@ -64,13 +99,12 @@ Heights are referenced to sea level.
     )
     ax.set_title("Topography of the Earth (ETOPO1)")
     ax.coastlines()
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.452 seconds)
+   **Total running time of the script:** ( 0 minutes  0.524 seconds)
 
 
 .. _sphx_glr_download_sample_data_earth_topography.py:
@@ -83,13 +117,13 @@ Heights are referenced to sea level.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: earth_topography.py <earth_topography.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: earth_topography.ipynb <earth_topography.ipynb>`
 

@@ -39,8 +39,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="harmonica.bouguer_correction" href="generated/harmonica.bouguer_correction.html" />
@@ -128,6 +130,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#equivalent-layers">Equivalent Layers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/harmonica.EQLHarmonic.html">harmonica.EQLHarmonic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/harmonica.EQLHarmonicSpherical.html">harmonica.EQLHarmonicSpherical</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#forward-modelling">Forward modelling</a><ul>
@@ -272,7 +275,7 @@
 </tr>
 </tbody>
 </table>
-<p>For the Normal Earth correction, see package <a class="reference external" href="https://www.fatiando.org/boule/latest/api/index.html#module-boule" title="(in Boule vv0.1.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boule</span></code></a>.</p>
+<p>For the Normal Earth correction, see package <a class="reference external" href="https://www.fatiando.org/boule/latest/api/index.html#module-boule" title="(in Boule vv0.2.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boule</span></code></a>.</p>
 </div>
 <div class="section" id="equivalent-layers">
 <h2>Equivalent Layers<a class="headerlink" href="#equivalent-layers" title="Permalink to this headline">¶</a></h2>
@@ -284,6 +287,9 @@
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/harmonica.EQLHarmonic.html#harmonica.EQLHarmonic" title="harmonica.EQLHarmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EQLHarmonic</span></code></a>([damping, points, relative_depth])</p></td>
 <td><p>Equivalent-layer for generic harmonic functions (gravity, magnetics, etc).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/harmonica.EQLHarmonicSpherical.html#harmonica.EQLHarmonicSpherical" title="harmonica.EQLHarmonicSpherical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EQLHarmonicSpherical</span></code></a>([damping, points, …])</p></td>
+<td><p>Equivalent-layer for generic harmonic functions in spherical coordinates</p></td>
 </tr>
 </tbody>
 </table>
@@ -420,7 +426,7 @@
     <p>
         &copy; Copyright 2018-2020, The Harmonica Developers
       <span class="lastupdated">
-        Last updated on Feb 27, 2020.
+        Last updated on Sep 30, 2020.
       </span>
 
     </p>

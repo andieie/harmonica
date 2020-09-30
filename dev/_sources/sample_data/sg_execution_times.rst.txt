@@ -5,16 +5,16 @@
 
 Computation times
 =================
-**00:09.090** total execution time for **sample_data** files:
+**00:10.089** total execution time for **sample_data** files:
 
 +-----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_sample_data_britain_magnetic.py` (``britain_magnetic.py``)         | 00:07.319 | 0.0 MB |
+| :ref:`sphx_glr_sample_data_britain_magnetic.py` (``britain_magnetic.py``)         | 00:08.046 | 0.0 MB |
 +-----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_sample_data_earth_geoid.py` (``earth_geoid.py``)                   | 00:00.476 | 0.0 MB |
+| :ref:`sphx_glr_sample_data_earth_geoid.py` (``earth_geoid.py``)                   | 00:00.530 | 0.0 MB |
 +-----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_sample_data_earth_topography.py` (``earth_topography.py``)         | 00:00.452 | 0.0 MB |
+| :ref:`sphx_glr_sample_data_earth_topography.py` (``earth_topography.py``)         | 00:00.524 | 0.0 MB |
 +-----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_sample_data_earth_gravity.py` (``earth_gravity.py``)               | 00:00.442 | 0.0 MB |
+| :ref:`sphx_glr_sample_data_earth_gravity.py` (``earth_gravity.py``)               | 00:00.497 | 0.0 MB |
 +-----------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_sample_data_south_africa_gravity.py` (``south_africa_gravity.py``) | 00:00.400 | 0.0 MB |
+| :ref:`sphx_glr_sample_data_south_africa_gravity.py` (``south_africa_gravity.py``) | 00:00.492 | 0.0 MB |
 +-----------------------------------------------------------------------------------+-----------+--------+

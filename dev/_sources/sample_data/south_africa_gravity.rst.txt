@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_sample_data_south_africa_gravity.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_sample_data_south_africa_gravity.py:
+        Click :ref:`here <sphx_glr_download_sample_data_south_africa_gravity.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_sample_data_south_africa_gravity.py:
 
 
 Land Gravity Data from South Africa
@@ -23,6 +25,7 @@ more information.
 
 
 .. image:: /sample_data/images/sphx_glr_south_africa_gravity_001.png
+    :alt: Observed gravity data from South Africa
     :class: sphx-glr-single-img
 
 
@@ -46,8 +49,6 @@ more information.
     14558 -17.94166   21.98333     1022.6  978211.38
 
     [14559 rows x 4 columns]
-    /home/travis/build/fatiando/harmonica/data/examples/south_africa_gravity.py:42: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations. 
-      plt.tight_layout()
 
 
 
@@ -86,13 +87,12 @@ more information.
     ax.set_extent(vd.get_region((data.longitude, data.latitude)))
     ax.gridlines(draw_labels=True)
     ax.coastlines()
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.400 seconds)
+   **Total running time of the script:** ( 0 minutes  0.492 seconds)
 
 
 .. _sphx_glr_download_sample_data_south_africa_gravity.py:
@@ -105,13 +105,13 @@ more information.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: south_africa_gravity.py <south_africa_gravity.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: south_africa_gravity.ipynb <south_africa_gravity.ipynb>`
 

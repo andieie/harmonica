@@ -39,11 +39,13 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="harmonica.point_mass_gravity" href="harmonica.point_mass_gravity.html" />
+    <link rel="next" title="harmonica.EQLHarmonicSpherical" href="harmonica.EQLHarmonicSpherical.html" />
     <link rel="prev" title="harmonica.bouguer_correction" href="harmonica.bouguer_correction.html" />
     <!-- Google Analytics tracking code -->
     <script>
@@ -128,6 +130,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#examples-using-harmonica-eqlharmonic">Examples using <code class="docutils literal notranslate"><span class="pre">harmonica.EQLHarmonic</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="harmonica.EQLHarmonicSpherical.html">harmonica.EQLHarmonicSpherical</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#forward-modelling">Forward modelling</a></li>
@@ -252,6 +255,8 @@
 </ul>
 <p>It cannot be used for:</p>
 <ul class="simple">
+<li><p>Regional or global data where Earth’s curvature must be taken into
+account</p></li>
 <li><p>Joint inversion of multiple data types (e.g., gravity + gravity
 gradients)</p></li>
 <li><p>Reduction to the pole of magnetic total field anomaly data</p></li>
@@ -262,7 +267,7 @@ points by default <a class="reference internal" href="../../references.html#coop
 specifying the <em>points</em> argument. Coefficients associated with each point
 source are estimated through linear least-squares with damping (Tikhonov
 0th order) regularization.</p>
-<p>The Green’s function for point mass effects used is the inverse Cartesian
+<p>The Green’s function for point mass effects used is the inverse Euclidean
 distance between the grid coordinates and the point source:</p>
 <div class="math notranslate nohighlight">
 \[\phi(\bar{x}, \bar{x}') = \frac{1}{||\bar{x} - \bar{x}'||}\]</div>
@@ -294,8 +299,8 @@ would mean point sources are above the data points). Ignored if
 <li><p><strong>coefs_</strong> (<em>array</em>) – Estimated coefficients of every point source.</p></li>
 <li><p><strong>region_</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – The boundaries (<code class="docutils literal notranslate"><span class="pre">[W,</span> <span class="pre">E,</span> <span class="pre">S,</span> <span class="pre">N]</span></code>) of the data used to fit the
 interpolator. Used as the default region for the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">grid</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter</span></code> methods.</p></li>
+<a class="reference internal" href="#harmonica.EQLHarmonic.grid" title="harmonica.EQLHarmonic.grid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">grid</span></code></a> and
+<a class="reference internal" href="#harmonica.EQLHarmonic.scatter" title="harmonica.EQLHarmonic.scatter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter</span></code></a> methods.</p></li>
 </ul>
 </dd>
 </dl>
@@ -348,14 +353,16 @@ interpolator. Used as the default region for the
 <p>Calls <code class="docutils literal notranslate"><span class="pre">fit</span></code> on the data, evaluates the residuals (data - predicted
 data), and returns the coordinates, residuals, and weights.</p>
 <p>No very useful by itself but this interface makes gridders compatible
-with other processing operations and is used by <a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.Chain.html#verde.Chain" title="(in Verde vv1.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">verde.Chain</span></code></a> to
+with other processing operations and is used by <a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.Chain.html#verde.Chain" title="(in Verde vv1.5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">verde.Chain</span></code></a> to
 join them together (for example, so you can fit a spline on the
 residuals of a trend).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>coordinates</strong> (<em>tuple of arrays</em>) – Arrays with the coordinates of each data point. Should be in the
-following order: (easting, northing, vertical, …).</p></li>
+following order: (easting, northing, vertical, …).
+For the specific definition of coordinate systems and what these
+names mean, see the class docstring.</p></li>
 <li><p><strong>data</strong> (<em>array</em><em> or </em><em>tuple of arrays</em>) – The data values of each data point. If the data has more than one
 component, <em>data</em> must be a tuple of arrays (one for each
 component).</p></li>
@@ -376,16 +383,16 @@ the input data minus the predicted data.</p>
 <code class="sig-prename descclassname">EQLHarmonic.</code><code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">coordinates</em>, <em class="sig-param">data</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/harmonica/equivalent_layer/harmonic.html#EQLHarmonic.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#harmonica.EQLHarmonic.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the coefficients of the equivalent layer.</p>
 <p>The data region is captured and used as default for the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">grid</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter</span></code> methods.</p>
+<a class="reference internal" href="#harmonica.EQLHarmonic.grid" title="harmonica.EQLHarmonic.grid"><code class="xref py py-meth docutils literal notranslate"><span class="pre">grid</span></code></a> and
+<a class="reference internal" href="#harmonica.EQLHarmonic.scatter" title="harmonica.EQLHarmonic.scatter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter</span></code></a> methods.</p>
 <p>All input arrays must have the same shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>coordinates</strong> (<em>tuple of arrays</em>) – Arrays with the coordinates of each data point. Should be in the
-following order: (easting, northing, upward, …).
-Only easting, northing, and upward will be used, all subsequent
-coordinates will be ignored.</p></li>
+following order: (<code class="docutils literal notranslate"><span class="pre">easting</span></code>, <code class="docutils literal notranslate"><span class="pre">northing</span></code>, <code class="docutils literal notranslate"><span class="pre">upward</span></code>, …).
+Only <code class="docutils literal notranslate"><span class="pre">easting</span></code>, <code class="docutils literal notranslate"><span class="pre">northing</span></code>, and <code class="docutils literal notranslate"><span class="pre">upward</span></code> will be used, all
+subsequent coordinates will be ignored.</p></li>
 <li><p><strong>data</strong> (<em>array</em>) – The data values of each data point.</p></li>
 <li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><em>array</em>) – If not None, then the weights assigned to each data point.
 Typically, this should be 1 over the data uncertainty squared.</p></li>
@@ -418,26 +425,27 @@ contained subobjects that are estimators.</p>
 <dd><p>Interpolate the data onto a regular grid.</p>
 <p>The grid can be specified by either the number of points in each
 dimension (the <em>shape</em>) or by the grid node spacing. See
-<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.grid_coordinates.html#verde.grid_coordinates" title="(in Verde vv1.3.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.grid_coordinates</span></code></a> for details. Other arguments for
-<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.grid_coordinates.html#verde.grid_coordinates" title="(in Verde vv1.3.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.grid_coordinates</span></code></a> can be passed as extra keyword arguments
+<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.grid_coordinates.html#verde.grid_coordinates" title="(in Verde vv1.5.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.grid_coordinates</span></code></a> for details. Other arguments for
+<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.grid_coordinates.html#verde.grid_coordinates" title="(in Verde vv1.5.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.grid_coordinates</span></code></a> can be passed as extra keyword arguments
 (<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>) to this method.</p>
 <p>If the interpolator collected the input data region, then it will be
 used if <code class="docutils literal notranslate"><span class="pre">region=None</span></code>. Otherwise, you must specify the grid region.</p>
 <p>Use the <em>dims</em> and <em>data_names</em> arguments to set custom names for the
-dimensions and the data field(s) in the output <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.14.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.
+dimensions and the data field(s) in the output <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.Dataset.html#xarray.Dataset" title="(in xarray v0.16.2.dev3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></a>.
 Default names will be provided if none are given.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>region</strong> (<em>list =</em><em> [</em><em>W</em><em>, </em><em>E</em><em>, </em><em>S</em><em>, </em><em>N</em><em>]</em>) – The boundaries of a given region in Cartesian or geographic
-coordinates.</p></li>
+<li><p><strong>region</strong> (<em>list =</em><em> [</em><em>W</em><em>, </em><em>E</em><em>, </em><em>S</em><em>, </em><em>N</em><em>]</em>) – The west, east, south, and north boundaries of a given region.</p></li>
 <li><p><strong>shape</strong> (<em>tuple =</em><em> (</em><em>n_north</em><em>, </em><em>n_east</em><em>) or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The number of points in the South-North and West-East directions,
 respectively.</p></li>
 <li><p><strong>spacing</strong> (<em>tuple =</em><em> (</em><em>s_north</em><em>, </em><em>s_east</em><em>) or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The grid spacing in the South-North and West-East directions,
 respectively.</p></li>
 <li><p><strong>dims</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The names of the northing and easting data dimensions,
-respectively, in the output grid. Defaults to <code class="docutils literal notranslate"><span class="pre">['northing',</span>
-<span class="pre">'easting']</span></code>. <strong>NOTE: This is an exception to the “easting” then
+respectively, in the output grid. Default is determined from the
+<code class="docutils literal notranslate"><span class="pre">dims</span></code> attribute of the class. Must be defined in the following
+order: northing dimension, easting dimension.
+<strong>NOTE: This is an exception to the “easting” then
 “northing” pattern but is required for compatibility with xarray.</strong></p></li>
 <li><p><strong>data_names</strong> (<em>list of None</em>) – The name(s) of the data variables in the output grid. Defaults to
 <code class="docutils literal notranslate"><span class="pre">['scalars']</span></code> for scalar data,
@@ -496,7 +504,7 @@ used as equivalent layer in the following order:
 <dt id="harmonica.EQLHarmonic.predict">
 <code class="sig-prename descclassname">EQLHarmonic.</code><code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">coordinates</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/harmonica/equivalent_layer/harmonic.html#EQLHarmonic.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#harmonica.EQLHarmonic.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the estimated equivalent layer on the given set of points.</p>
-<p>Requires a fitted estimator (see <code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code>).</p>
+<p>Requires a fitted estimator (see <a class="reference internal" href="#harmonica.EQLHarmonic.fit" title="harmonica.EQLHarmonic.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>coordinates</strong> (<em>tuple of arrays</em>) – Arrays with the coordinates of each data point. Should be in the
@@ -516,13 +524,36 @@ subsequent coordinates will be ignored.</p>
 <dd><p>Interpolate data along a profile between two points.</p>
 <p>Generates the profile along a straight line assuming Cartesian
 distances. Point coordinates are generated by
-<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.profile_coordinates.html#verde.profile_coordinates" title="(in Verde vv1.3.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.profile_coordinates</span></code></a>. Other arguments for this function
+<a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.profile_coordinates.html#verde.profile_coordinates" title="(in Verde vv1.5.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.profile_coordinates</span></code></a>. Other arguments for this function
 can be passed as extra keyword arguments (<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>) to this method.</p>
 <p>Use the <em>dims</em> and <em>data_names</em> arguments to set custom names for the
 dimensions and the data field(s) in the output
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.0.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>. Default names are provided.</p>
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>. Default names are provided.</p>
 <p>Includes the calculated Cartesian distance from <em>point1</em> for each data
 point in the profile.</p>
+<p>To specify <em>point1</em> and <em>point2</em> in a coordinate system that would
+require projection to Cartesian (geographic longitude and latitude, for
+example), use the <code class="docutils literal notranslate"><span class="pre">projection</span></code> argument. With this option, the input
+points will be projected using the given projection function prior to
+computations. The generated Cartesian profile coordinates will be
+projected back to the original coordinate system. <strong>Note that the
+profile points are evenly spaced in projected coordinates, not the
+original system (e.g., geographic)</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>The profile calculation method with a projection has changed in
+Verde 1.4.0</strong>. Previous versions generated coordinates (assuming
+they were Cartesian) and projected them afterwards. This led to
+“distances” being incorrectly handled and returned in unprojected
+coordinates. For example, if <code class="docutils literal notranslate"><span class="pre">projection</span></code> is from geographic to
+Mercator, the distances would be “angles” (incorrectly calculated
+as if they were Cartesian). After 1.4.0, <em>point1</em> and <em>point2</em> are
+projected prior to generating coordinates for the profile,
+guaranteeing that distances are properly handled in a Cartesian
+system. <strong>With this change, the profile points are now evenly
+spaced in projected coordinates and the distances are returned in
+projected coordinates as well.</strong></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -532,21 +563,26 @@ point.</p></li>
 point.</p></li>
 <li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The number of points to generate.</p></li>
 <li><p><strong>dims</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The names of the northing and easting data dimensions,
-respectively, in the output dataframe. Defaults to <code class="docutils literal notranslate"><span class="pre">['northing',</span>
-<span class="pre">'easting']</span></code>. <strong>NOTE: This is an exception to the “easting” then
+respectively, in the output dataframe. Default is determined from
+the <code class="docutils literal notranslate"><span class="pre">dims</span></code> attribute of the class. Must be defined in the
+following order: northing dimension, easting dimension.
+<strong>NOTE: This is an exception to the “easting” then
 “northing” pattern but is required for compatibility with xarray.</strong></p></li>
 <li><p><strong>data_names</strong> (<em>list of None</em>) – The name(s) of the data variables in the output dataframe. Defaults
 to <code class="docutils literal notranslate"><span class="pre">['scalars']</span></code> for scalar data,
 <code class="docutils literal notranslate"><span class="pre">['east_component',</span> <span class="pre">'north_component']</span></code> for 2D vector data, and
 <code class="docutils literal notranslate"><span class="pre">['east_component',</span> <span class="pre">'north_component',</span> <span class="pre">'vertical_component']</span></code> for
 3D vector data.</p></li>
-<li><p><strong>projection</strong> (<em>callable</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – If not None, then should be a callable object
-<code class="docutils literal notranslate"><span class="pre">projection(easting,</span> <span class="pre">northing)</span> <span class="pre">-&gt;</span> <span class="pre">(proj_easting,</span> <span class="pre">proj_northing)</span></code>
-that takes in easting and northing coordinate arrays and returns
-projected northing and easting coordinate arrays. This function
-will be used to project the generated profile coordinates before
-passing them into <code class="docutils literal notranslate"><span class="pre">predict</span></code>. For example, you can use this to
-generate a geographic profile from a Cartesian gridder.</p></li>
+<li><p><strong>projection</strong> (<em>callable</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – If not None, then should be a callable object <code class="docutils literal notranslate"><span class="pre">projection(easting,</span>
+<span class="pre">northing,</span> <span class="pre">inverse=False)</span> <span class="pre">-&gt;</span> <span class="pre">(proj_easting,</span> <span class="pre">proj_northing)</span></code> that
+takes in easting and northing coordinate arrays and returns
+projected northing and easting coordinate arrays. Should also take
+an optional keyword argument <code class="docutils literal notranslate"><span class="pre">inverse</span></code> (default to False) that if
+True will calculate the inverse transform instead. This function
+will be used to project the profile end points before generating
+coordinates and passing them into <code class="docutils literal notranslate"><span class="pre">predict</span></code>. It will also be used
+to undo the projection of the coordinates before returning the
+results.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -559,27 +595,28 @@ generate a geographic profile from a Cartesian gridder.</p></li>
 <dt id="harmonica.EQLHarmonic.scatter">
 <code class="sig-prename descclassname">EQLHarmonic.</code><code class="sig-name descname">scatter</code><span class="sig-paren">(</span><em class="sig-param">region=None</em>, <em class="sig-param">size=300</em>, <em class="sig-param">random_state=0</em>, <em class="sig-param">dims=None</em>, <em class="sig-param">data_names=None</em>, <em class="sig-param">projection=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#harmonica.EQLHarmonic.scatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interpolate values onto a random scatter of points.</p>
-<p>Point coordinates are generated by <a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.scatter_points.html#verde.scatter_points" title="(in Verde vv1.3.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.scatter_points</span></code></a>. Other
+<p>Point coordinates are generated by <a class="reference external" href="https://www.fatiando.org/verde/latest/api/generated/verde.scatter_points.html#verde.scatter_points" title="(in Verde vv1.5.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">verde.scatter_points</span></code></a>. Other
 arguments for this function can be passed as extra keyword arguments
 (<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>) to this method.</p>
 <p>If the interpolator collected the input data region, then it will be
 used if <code class="docutils literal notranslate"><span class="pre">region=None</span></code>. Otherwise, you must specify the grid region.</p>
 <p>Use the <em>dims</em> and <em>data_names</em> arguments to set custom names for the
 dimensions and the data field(s) in the output
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.0.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>. Default names are provided.</p>
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>. Default names are provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>region</strong> (<em>list =</em><em> [</em><em>W</em><em>, </em><em>E</em><em>, </em><em>S</em><em>, </em><em>N</em><em>]</em>) – The boundaries of a given region in Cartesian or geographic
-coordinates.</p></li>
+<li><p><strong>region</strong> (<em>list =</em><em> [</em><em>W</em><em>, </em><em>E</em><em>, </em><em>S</em><em>, </em><em>N</em><em>]</em>) – The west, east, south, and north boundaries of a given region.</p></li>
 <li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The number of points to generate.</p></li>
-<li><p><strong>random_state</strong> (<em>numpy.random.RandomState</em><em> or </em><em>an int seed</em>) – A random number generator used to define the state of the random
+<li><p><strong>random_state</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState" title="(in NumPy v1.19)"><em>numpy.random.RandomState</em></a><em> or </em><em>an int seed</em>) – A random number generator used to define the state of the random
 permutations. Use a fixed seed to make sure computations are
 reproducible. Use <code class="docutils literal notranslate"><span class="pre">None</span></code> to choose a seed automatically
 (resulting in different numbers with each run).</p></li>
 <li><p><strong>dims</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The names of the northing and easting data dimensions,
-respectively, in the output dataframe. Defaults to <code class="docutils literal notranslate"><span class="pre">['northing',</span>
-<span class="pre">'easting']</span></code>. <strong>NOTE: This is an exception to the “easting” then
+respectively, in the output dataframe. Default is determined from
+the <code class="docutils literal notranslate"><span class="pre">dims</span></code> attribute of the class. Must be defined in the
+following order: northing dimension, easting dimension.
+<strong>NOTE: This is an exception to the “easting” then
 “northing” pattern but is required for compatibility with xarray.</strong></p></li>
 <li><p><strong>data_names</strong> (<em>list of None</em>) – The name(s) of the data variables in the output dataframe. Defaults
 to <code class="docutils literal notranslate"><span class="pre">['scalars']</span></code> for scalar data,
@@ -614,7 +651,9 @@ will be averaged.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>coordinates</strong> (<em>tuple of arrays</em>) – Arrays with the coordinates of each data point. Should be in the
-following order: (easting, northing, vertical, …).</p></li>
+following order: (easting, northing, vertical, …).
+For the specific definition of coordinate systems and what these
+names mean, see the class docstring.</p></li>
 <li><p><strong>data</strong> (<em>array</em><em> or </em><em>tuple of arrays</em>) – The data values of each data point. If the data has more than one
 component, <em>data</em> must be a tuple of arrays (one for each
 component).</p></li>
@@ -650,8 +689,12 @@ component of a nested object.</p>
 <div class="section" id="examples-using-harmonica-eqlharmonic">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">harmonica.EQLHarmonic</span></code><a class="headerlink" href="#examples-using-harmonica-eqlharmonic" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="Most potential field surveys gather data along scattered and uneven flight lines or ground meas..."><div class="figure align-default" id="id3">
-<img alt="../../_images/sphx_glr_harmonic_thumb.png" src="../../_images/sphx_glr_harmonic_thumb.png" />
+<img alt="Gridding and upward continuation" src="../../_images/sphx_glr_harmonic_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/eql/harmonic.html#sphx-glr-gallery-eql-harmonic-py"><span class="std std-ref">Gridding and upward continuation</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The curvature of the Earth must be taken into account when gridding and processing magnetic or ..."><div class="figure align-default" id="id4">
+<img alt="Gridding in spherical coordinates" src="../../_images/sphx_glr_harmonic_spherical_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/eql/harmonic_spherical.html#sphx-glr-gallery-eql-harmonic-spherical-py"><span class="std std-ref">Gridding in spherical coordinates</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
 </div>
@@ -664,7 +707,7 @@ component of a nested object.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="harmonica.point_mass_gravity.html" class="btn btn-neutral float-right" title="harmonica.point_mass_gravity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="harmonica.EQLHarmonicSpherical.html" class="btn btn-neutral float-right" title="harmonica.EQLHarmonicSpherical" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="harmonica.bouguer_correction.html" class="btn btn-neutral float-left" title="harmonica.bouguer_correction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -678,7 +721,7 @@ component of a nested object.</p>
     <p>
         &copy; Copyright 2018-2020, The Harmonica Developers
       <span class="lastupdated">
-        Last updated on Feb 27, 2020.
+        Last updated on Sep 30, 2020.
       </span>
 
     </p>

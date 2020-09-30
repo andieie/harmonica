@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_gallery_isostasy_airy.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_gallery_isostasy_airy.py:
+        Click :ref:`here <sphx_glr_download_gallery_isostasy_airy.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_gallery_isostasy_airy.py:
 
 
 Airy Isostasy
@@ -27,6 +29,7 @@ isostatic Moho depth of Africa.
 
 
 .. image:: /gallery/images/sphx_glr_isostasy_airy_001.png
+    :alt: Airy isostatic Moho depth of Africa
     :class: sphx-glr-single-img
 
 
@@ -44,6 +47,38 @@ isostatic Moho depth of Africa.
       * latitude    (latitude) float64 -40.0 -39.5 -39.0 -38.5 ... 44.0 44.5 45.0
     Data variables:
         topography  (latitude, longitude) float64 -3.523e+03 -3.392e+03 ... 29.0
+    Attributes:
+        generating_institute:  gfz-potsdam
+        generating_date:       2018/12/13
+        product_type:          topography
+        body:                  earth
+        modelname:             etopo1-2250
+        max_used_degree:       1277
+        filterlength:          1.0000 deg. (Gauss-Filter)
+        flength_definition:    6sigma
+        nhalf:                 405 (Transfer-Function T(nhalf)=1/2)
+        functional:            topography_shm (from shm)
+        unit:                  meter
+        refsysname:            WGS84
+        radiusrefsys:          6378137.000 m
+        flatrefsys:            3.352810664747480E-03 (1/298.25722356300)
+        long_lat_unit:         degree
+        latlimit_north:        90.000000000000
+        latlimit_south:        -90.000000000000
+        longlimit_west:        -180.00000000000
+        longlimit_east:        180.00000000000
+        gridstep:              0.50000000000000
+        latitude_parallels:    361
+        longitude_parallels:   721
+        number_of_gridpoints:  260281
+        gapvalue:              99999.0000
+        weighted_mean:         -2.3864771E+03 meter
+        maxvalue:              5.6509528E+03 meter
+        minvalue:              -8.4094822E+03 meter
+        signal_wrms:           2.4872117E+03 meter
+        grid_format:           long_lat_value
+        attributes:            longitude latitude topography
+        attributes_units:      deg. deg. meter
 
     Moho depth grid:
     <xarray.DataArray 'moho_depth' (latitude: 171, longitude: 161)>
@@ -63,8 +98,6 @@ isostatic Moho depth of Africa.
         density_mantle:   3300.0
         density_water:    1000.0
         reference_depth:  30000.0
-    /home/travis/build/fatiando/harmonica/examples/isostasy_airy.py:47: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations. 
-      plt.tight_layout()
 
 
 
@@ -104,13 +137,12 @@ isostatic Moho depth of Africa.
     ax.coastlines()
     ax.set_title("Airy isostatic Moho depth of Africa")
     ax.set_extent(region, crs=ccrs.PlateCarree())
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.213 seconds)
+   **Total running time of the script:** ( 0 minutes  0.251 seconds)
 
 
 .. _sphx_glr_download_gallery_isostasy_airy.py:
@@ -123,13 +155,13 @@ isostatic Moho depth of Africa.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: isostasy_airy.py <isostasy_airy.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: isostasy_airy.ipynb <isostasy_airy.ipynb>`
 

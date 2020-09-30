@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_sample_data_earth_gravity.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_sample_data_earth_gravity.py:
+        Click :ref:`here <sphx_glr_download_sample_data_earth_gravity.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_sample_data_earth_gravity.py:
 
 
 Earth Gravity
@@ -18,6 +20,7 @@ harmonic model EIGEN-6C4 [Forste_etal2014]_.
 
 
 .. image:: /sample_data/images/sphx_glr_earth_gravity_001.png
+    :alt: Gravity of the Earth (EIGEN-6C4)
     :class: sphx-glr-single-img
 
 
@@ -35,6 +38,42 @@ harmonic model EIGEN-6C4 [Forste_etal2014]_.
     Data variables:
         gravity          (latitude, longitude) float64 9.801e+05 ... 9.802e+05
         height_over_ell  (latitude, longitude) float64 1e+04 1e+04 ... 1e+04 1e+04
+    Attributes:
+        generating_institute:  gfz-potsdam
+        generating_date:       2018/11/07
+        product_type:          gravity_field
+        body:                  earth
+        modelname:             EIGEN-6C4
+        max_used_degree:       1277
+        filterlength:          1.0000 deg. (Gauss-Filter)
+        flength_definition:    6sigma
+        nhalf:                 405 (Transfer-Function T(nhalf)=1/2)
+        tide_system:           tide_free
+        functional:            gravity_ell (centrifugal term included)
+        unit:                  mgal
+        refsysname:            WGS84
+        gmrefpot:              3.98600441800E+14 m**3/s**2
+        radiusrefpot:          6378137.000 m
+        flatrefpot:            3.352810664747480E-03 (1/298.25722356300)
+        omegarefpot:           7.29211500000E-05 1/s
+        long_lat_unit:         degree
+        latlimit_north:        90.000000000000
+        latlimit_south:        -90.000000000000
+        longlimit_west:        -180.00000000000
+        longlimit_east:        180.00000000000
+        gridstep:              0.50000000000000
+        height_over_ell:       10000.0000 m
+        latitude_parallels:    361
+        longitude_parallels:   721
+        number_of_gridpoints:  260281
+        gapvalue:              9999999.0000
+        weighted_mean:         9.7667902E+05 mgal
+        maxvalue:              9.8018358E+05 mgal
+        minvalue:              9.7476403E+05 mgal
+        signal_wrms:           1.5467865E+03 mgal
+        grid_format:           long_lat_value
+        attributes:            longitude latitude gravity_ell
+        attributes_units:      deg. deg. mgal
 
 
 
@@ -65,13 +104,12 @@ harmonic model EIGEN-6C4 [Forste_etal2014]_.
     )
     ax.set_title("Gravity of the Earth (EIGEN-6C4)")
     ax.coastlines()
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.442 seconds)
+   **Total running time of the script:** ( 0 minutes  0.497 seconds)
 
 
 .. _sphx_glr_download_sample_data_earth_gravity.py:
@@ -84,13 +122,13 @@ harmonic model EIGEN-6C4 [Forste_etal2014]_.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: earth_gravity.py <earth_gravity.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: earth_gravity.ipynb <earth_gravity.ipynb>`
 

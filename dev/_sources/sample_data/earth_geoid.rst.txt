@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_sample_data_earth_geoid.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_sample_data_earth_geoid.py:
+        Click :ref:`here <sphx_glr_download_sample_data_earth_geoid.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_sample_data_earth_geoid.py:
 
 
 Earth Geoid
@@ -21,6 +23,7 @@ EIGEN-6C4 [Forste_etal2014]_.
 
 
 .. image:: /sample_data/images/sphx_glr_earth_geoid_001.png
+    :alt: Geoid heights (EIGEN-6C4)
     :class: sphx-glr-single-img
 
 
@@ -37,6 +40,44 @@ EIGEN-6C4 [Forste_etal2014]_.
       * latitude   (latitude) float64 -90.0 -89.5 -89.0 -88.5 ... 89.0 89.5 90.0
     Data variables:
         geoid      (latitude, longitude) float64 -29.5 -29.5 -29.5 ... 15.37 15.37
+    Attributes:
+        generating_institute:  gfz-potsdam
+        generating_date:       2018/12/13
+        product_type:          gravity_field
+        body:                  earth
+        modelname:             EIGEN-6C4
+        max_used_degree:       1277
+        filterlength:          1.0000 deg. (Gauss-Filter)
+        flength_definition:    6sigma
+        nhalf:                 405 (Transfer-Function T(nhalf)=1/2)
+        tide_system:           tide_free
+        functional:            geoid
+        zero_degree_term:      included
+        unit:                  meter
+        crust_density:         2670.0 kg/m**3
+        refsysname:            WGS84
+        gmrefpot:              3.98600441800E+14 m**3/s**2
+        radiusrefpot:          6378137.000 m
+        flatrefpot:            3.352810664747480E-03 (1/298.25722356300)
+        omegarefpot:           7.29211500000E-05 1/s
+        normal_potential:      6.263685171456948E+07 m**2/s**2
+        long_lat_unit:         degree
+        latlimit_north:        90.000000000000
+        latlimit_south:        -90.000000000000
+        longlimit_west:        -180.00000000000
+        longlimit_east:        180.00000000000
+        gridstep:              0.50000000000000
+        latitude_parallels:    361
+        longitude_parallels:   721
+        number_of_gridpoints:  260281
+        gapvalue:              999.0000
+        weighted_mean:         -4.3554140E-02 meter
+        maxvalue:              8.4722744E+01 meter
+        minvalue:              -1.0625734E+02 meter
+        signal_wrms:           3.0584191E+01 meter
+        grid_format:           long_lat_value
+        attributes:            longitude latitude geoid
+        attributes_units:      deg. deg. meter
 
 
 
@@ -65,13 +106,12 @@ EIGEN-6C4 [Forste_etal2014]_.
     )
     ax.set_title("Geoid heights (EIGEN-6C4)")
     ax.coastlines()
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.476 seconds)
+   **Total running time of the script:** ( 0 minutes  0.530 seconds)
 
 
 .. _sphx_glr_download_sample_data_earth_geoid.py:
@@ -84,13 +124,13 @@ EIGEN-6C4 [Forste_etal2014]_.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: earth_geoid.py <earth_geoid.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: earth_geoid.ipynb <earth_geoid.ipynb>`
 

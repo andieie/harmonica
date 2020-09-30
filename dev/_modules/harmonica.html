@@ -39,8 +39,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <!-- Google Analytics tracking code -->
@@ -222,7 +224,7 @@
 <span class="kn">from</span> <span class="nn">.forward.point_mass</span> <span class="kn">import</span> <span class="n">point_mass_gravity</span>
 <span class="kn">from</span> <span class="nn">.forward.tesseroid</span> <span class="kn">import</span> <span class="n">tesseroid_gravity</span>
 <span class="kn">from</span> <span class="nn">.forward.prism</span> <span class="kn">import</span> <span class="n">prism_gravity</span>
-<span class="kn">from</span> <span class="nn">.equivalent_layer.harmonic</span> <span class="kn">import</span> <span class="n">EQLHarmonic</span>
+<span class="kn">from</span> <span class="nn">.equivalent_layer.harmonic</span> <span class="kn">import</span> <span class="n">EQLHarmonic</span><span class="p">,</span> <span class="n">EQLHarmonicSpherical</span>
 
 <span class="c1"># Get the version number through versioneer</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">full_version</span>
@@ -288,7 +290,7 @@
     <p>
         &copy; Copyright 2018-2020, The Harmonica Developers
       <span class="lastupdated">
-        Last updated on Feb 27, 2020.
+        Last updated on Sep 30, 2020.
       </span>
 
     </p>

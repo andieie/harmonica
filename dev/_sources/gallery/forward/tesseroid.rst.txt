@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_gallery_forward_tesseroid.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_gallery_forward_tesseroid.py:
+        Click :ref:`here <sphx_glr_download_gallery_forward_tesseroid.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_gallery_forward_tesseroid.py:
 
 
 Tesseroids (spherical prisms)
@@ -20,6 +22,7 @@ function.
 
 
 .. image:: /gallery/forward/images/sphx_glr_tesseroid_001.png
+    :alt: Downward component of gravitational acceleration
     :class: sphx-glr-single-img
 
 
@@ -93,7 +96,7 @@ function.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.140 seconds)
+   **Total running time of the script:** ( 0 minutes  5.941 seconds)
 
 
 .. _sphx_glr_download_gallery_forward_tesseroid.py:
@@ -106,13 +109,13 @@ function.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: tesseroid.py <tesseroid.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: tesseroid.ipynb <tesseroid.ipynb>`
 

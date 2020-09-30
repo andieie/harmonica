@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_gallery_gravity_disturbance_topofree.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_gallery_gravity_disturbance_topofree.py:
+        Click :ref:`here <sphx_glr_download_gallery_gravity_disturbance_topofree.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_gallery_gravity_disturbance_topofree.py:
 
 
 Topography-free (Bouguer) Gravity Disturbances
@@ -30,6 +32,7 @@ correction.
 
 
 .. image:: /gallery/images/sphx_glr_gravity_disturbance_topofree_001.png
+    :alt: Topography-free (Bouguer) gravity of disturbance of the Earth
     :class: sphx-glr-single-img
 
 
@@ -100,13 +103,12 @@ correction.
     )
     ax.set_title("Topography-free (Bouguer) gravity of disturbance of the Earth")
     ax.coastlines()
-    plt.tight_layout()
     plt.show()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.523 seconds)
+   **Total running time of the script:** ( 0 minutes  1.890 seconds)
 
 
 .. _sphx_glr_download_gallery_gravity_disturbance_topofree.py:
@@ -119,13 +121,13 @@ correction.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: gravity_disturbance_topofree.py <gravity_disturbance_topofree.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: gravity_disturbance_topofree.ipynb <gravity_disturbance_topofree.ipynb>`
 

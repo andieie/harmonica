@@ -39,8 +39,10 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="harmonica.load_icgem_gdf" href="harmonica.load_icgem_gdf.html" />
@@ -269,7 +271,7 @@ instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>topography</strong> (array or <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.14.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Topography height and bathymetry depth in meters. It is usually prudent
+<li><p><strong>topography</strong> (array or <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.16.2.dev3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – Topography height and bathymetry depth in meters. It is usually prudent
 to use floating point values instead of integers to avoid integer
 division errors.</p></li>
 <li><p><strong>density_crust</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Density of the crust in <span class="math notranslate nohighlight">\(kg/m^3\)</span>.</p></li>
@@ -279,7 +281,7 @@ division errors.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>moho_depth</strong> (array or <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.14.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – The isostatic Moho depth in meters.</p>
+<dd class="field-even"><p><strong>moho_depth</strong> (array or <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.16.2.dev3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>) – The isostatic Moho depth in meters.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -287,7 +289,7 @@ division errors.</p></li>
 <div class="section" id="examples-using-harmonica-isostasy-airy">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">harmonica.isostasy_airy</span></code><a class="headerlink" href="#examples-using-harmonica-isostasy-airy" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="According to the Airy hypothesis of isostasy, topography above sea level is supported by a thic..."><div class="figure align-default" id="id4">
-<img alt="../../_images/sphx_glr_isostasy_airy_thumb.png" src="../../_images/sphx_glr_isostasy_airy_thumb.png" />
+<img alt="Airy Isostasy" src="../../_images/sphx_glr_isostasy_airy_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../../gallery/isostasy_airy.html#sphx-glr-gallery-isostasy-airy-py"><span class="std std-ref">Airy Isostasy</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
@@ -315,7 +317,7 @@ division errors.</p></li>
     <p>
         &copy; Copyright 2018-2020, The Harmonica Developers
       <span class="lastupdated">
-        Last updated on Feb 27, 2020.
+        Last updated on Sep 30, 2020.
       </span>
 
     </p>
