@@ -1,4 +1,4 @@
- """
+"""
  Pratt Isostasy
  =============
  
@@ -10,7 +10,7 @@
  heated crustal material, which had a larger volume but a lower density after it had cooled.
  
 
-        *Schematic of isostatic compensation following the Pratt hypothesis.*
+ *Schematic of isostatic compensation following the Pratt hypothesis.*
 
 
     On the continents (positive topographic heights):

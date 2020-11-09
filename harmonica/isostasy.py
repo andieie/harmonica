@@ -158,16 +158,18 @@ def isostasy_pratt(
 
     """
     
-#Start here to formulate PRATT
-    # 1D DataArray topography
+    #Start here to formulate PRATT
+    # 1D Numpy topography - Start with numpy array 
+    
     oceans = np.array(topography < 0)
     continent = np.logical_not(oceans)
     values = topography.values
-    continent_v = (density_crust * comp_depth) / (topography.values + comp_depth ) #only values where continents are
+    continent_v = (density_crust * comp_depth) / (topography + comp_depth ) #only values where continents are
     oceans_v= (density_crust*comp_depth - density_water*topography.values*-1)/ (comp_depth-topography.values*-1)
     cont = continent_v*continent
     oce = oceans_v*oceans
     rhot = cont+oce
+    
     if isinstance(rhot, xr.DataArray):
         rhot.name = "density of prisms"
         rhot.attrs["isostasy"] = "Pratt"
